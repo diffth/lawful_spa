@@ -1,63 +1,81 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
-import { Navbar } from './components/Navbar';
-import { Footer } from './components/Footer';
-import { QuickConsultModal } from './components/QuickConsultModal';
-import { HomePage } from './pages/HomePage';
-import { AboutPage } from './pages/AboutPage';
-import { LawyersPage } from './pages/LawyersPage';
-import { LawyerDetailPage } from './pages/LawyerDetailPage';
-import { PracticeAreasPage } from './pages/PracticeAreasPage';
-import { SuccessCasesPage } from './pages/SuccessCasesPage';
-import { MediaPage } from './pages/MediaPage';
-import { ConsultationPage } from './pages/ConsultationPage';
+import type { Location } from 'react-router-dom';
+import { SiteHeader } from './components/SiteHeader';
+import { SiteFooter } from './components/SiteFooter';
+import { MobileCallBar } from './components/MobileCallBar';
+import { Landing } from './pages/Landing';
+import { CaseArchive } from './pages/CaseArchive';
+import { CaseDetail } from './pages/CaseDetail';
+import { InsightDetail } from './pages/InsightDetail';
 
-// Scroll to top on route changes
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
+type BackgroundState = { background?: Location } | null;
+
+/**
+ * 페이지 이동 시 스크롤 위치 정리.
+ * 원페이지 구조라 해시 처리가 본체다. 고정 헤더에 표제가 가리지 않도록
+ * scroll-margin-top 을 index.css 에서 주고, 여기서는 대상만 찾아 보낸다.
+ * 오버레이가 열릴 때는 배경이 그대로 있어야 하므로 아무것도 하지 않는다.
+ */
+const ScrollManager: React.FC<{ overlayOpen: boolean }> = ({ overlayOpen }) => {
+  const { pathname, hash, search } = useLocation();
 
   useEffect(() => {
+    if (overlayOpen) return;
+
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [pathname, hash, search, overlayOpen]);
 
   return null;
 };
 
 export const App: React.FC = () => {
-  const [isConsultModalOpen, setIsConsultModalOpen] = useState(false);
+  const location = useLocation();
+  const background = (location.state as BackgroundState)?.background;
 
-  const handleOpenModal = () => setIsConsultModalOpen(true);
-  const handleCloseModal = () => setIsConsultModalOpen(false);
+  // 목록에서 열었으면 배경을, 주소로 직접 들어왔으면 현재 위치를 밑그림으로 쓴다
+  const baseLocation = background ?? location;
+  const showsLanding =
+    baseLocation.pathname === '/' || baseLocation.pathname.startsWith('/insights/');
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-amber-400 selection:text-slate-950">
-      <ScrollToTop />
-      <Navbar onOpenConsultModal={handleOpenModal} />
+    <div className="flex min-h-screen flex-col bg-surface">
+      <ScrollManager overlayOpen={Boolean(background)} />
+      {/* 밑그림이 랜딩(어두운 히어로)이면 헤더를 겹쳐 띄우고, 아카이브면 흰 배경으로 고정한다 */}
+      <SiteHeader variant={showsLanding ? 'overlay' : 'solid'} />
 
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<HomePage onOpenConsultModal={handleOpenModal} />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/lawyers" element={<LawyersPage onOpenConsultModal={handleOpenModal} />} />
-          <Route path="/lawyers/:id" element={<LawyerDetailPage onOpenConsultModal={handleOpenModal} />} />
-          <Route path="/practice-areas" element={<PracticeAreasPage onOpenConsultModal={handleOpenModal} />} />
-          <Route path="/cases" element={<SuccessCasesPage onOpenConsultModal={handleOpenModal} />} />
-          <Route path="/media" element={<MediaPage />} />
-          <Route path="/consultation" element={<ConsultationPage />} />
-          {/* Legacy / alias redirects */}
-          <Route path="/kwa-gallery_member_v-6" element={<Navigate to="/lawyers/oh-se-young" replace />} />
-          <Route path="/kwa-gallery_member" element={<Navigate to="/lawyers" replace />} />
+        <Routes location={baseLocation}>
+          <Route path="/" element={<Landing />} />
+          <Route path="/cases" element={<CaseArchive />} />
+
+          {/* 주소로 직접 들어온 상세 — 밑그림을 깔고 그 위에 오버레이를 얹는다.
+              목록에서 연 경우엔 baseLocation 이 배경이라 이 두 줄은 타지 않는다. */}
+          <Route path="/cases/:id" element={<CaseArchive />} />
+          <Route path="/insights/:id" element={<Landing />} />
+
+          {/* 기존 법인 사이트 주소 호환 */}
+          <Route path="/kwa-gallery_member_v-6" element={<Navigate to="/" replace />} />
+          <Route path="/kwa-gallery_member" element={<Navigate to="/" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
 
-      <Footer />
+      <SiteFooter />
+      <MobileCallBar />
 
-      {/* Quick Consultation Popup Modal */}
-      <QuickConsultModal
-        isOpen={isConsultModalOpen}
-        onClose={handleCloseModal}
-      />
+      {/* 오버레이 — 현재 위치 기준으로 항상 판정한다 */}
+      <Routes>
+        <Route path="/cases/:id" element={<CaseDetail />} />
+        <Route path="/insights/:id" element={<InsightDetail />} />
+      </Routes>
     </div>
   );
 };
