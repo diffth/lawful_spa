@@ -4,19 +4,77 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>법무법인 행복한동행 | 부장검사·사법연수원 교수 출신 오세영 대표변호사</title>
-    <meta name="description" content="갑작스런 법률분쟁, 부장검사 및 사법연수원 교수 출신 오세영 대표변호사와 법무법인 행복한동행이 든든한 조력자가 되어 드립니다. 형사, 민사, 행정, 중대재해 전문 무료상담." />
-    <meta name="keywords" content="법무법인 행복한동행, 오세영 변호사, 노정환 변호사, 부장검사 출신 변호사, 사법연수원 교수, 형사전문변호사, 성범죄전문, 중대재해, 서초동 변호사, 교대역 법률상담" />
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="법무법인 행복한동행 | 오세영 대표변호사" />
-    <meta property="og:description" content="전문 법률지식과 풍부한 실무 경험으로 의뢰인과 행복한 동행을 약속합니다." />
+    <meta name="theme-color" content="#0b0f14" />
+    <title>오세영 변호사 | 부장검사 출신 · 성범죄 공인전문검사</title>
+    <meta
+      name="description"
+      content="전 서울중앙지검 부장검사, 사법연수원 교수, 검찰총장 공인전문검사(성범죄) 오세영 변호사. 형사 수사 초기 대응부터 판결까지 변호사가 직접 맡습니다. 서초 교대역."
+    />
+    <meta
+      name="keywords"
+      content="오세영 변호사, 부장검사 출신 변호사, 성범죄 공인전문검사, 형사전문변호사, 사법연수원 교수 출신, 중대재해처벌법, 서초동 형사변호사, 교대역 법률상담"
+    />
+    <link rel="canonical" href="https://haengdong.co.kr/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="오세영 변호사" />
+    <meta property="og:title" content="오세영 변호사 | 부장검사 출신 · 성범죄 공인전문검사" />
+    <meta
+      property="og:description"
+      content="수사 초기의 판단이 결과를 바꿉니다. 수사기관 안에서 26년을 보낸 변호사가 직접 상담하고 직접 변론합니다."
+    />
     <meta property="og:image" content="/images/og-image.jpg" />
-    <!-- Fonts -->
+
+    <!-- 본문 · UI 단일 서체 -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+
+    <!-- 개인 브랜드 사이트라 Person/Attorney 구조화 데이터가 검색 노출에 직접 작용한다 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Attorney",
+        "name": "오세영 변호사",
+        "url": "https://haengdong.co.kr/",
+        "telephone": "+82-2-583-6699",
+        "email": "syoh@haengdong.co.kr",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "서초중앙로 125 로이어즈타워 602호",
+          "addressLocality": "서초구",
+          "addressRegion": "서울특별시",
+          "addressCountry": "KR"
+        },
+        "areaServed": "KR",
+        "knowsLanguage": "ko",
+        "employee": {
+          "@type": "Person",
+          "name": "오세영",
+          "jobTitle": "대표변호사",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "법무법인 행복한동행"
+          },
+          "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "서울대학교" },
+            { "@type": "CollegeOrUniversity", "name": "연세대학교 대학원 법학과" }
+          ],
+          "hasCredential": [
+            "제41회 사법시험 합격 · 사법연수원 31기",
+            "검찰총장 공인전문검사 인증 (성범죄, 2020)",
+            "전 서울중앙지방검찰청 부장검사",
+            "전 사법연수원 · 법무연수원 교수"
+          ]
+        }
+      }
+    </script>
   </head>
-  <body class="font-sans antialiased text-slate-800 bg-slate-50 selection:bg-blue-600 selection:text-white">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
