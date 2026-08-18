@@ -16,7 +16,7 @@ export const ProfileSection: React.FC = () => {
             <>
               검사로 26년,
               <br />
-              같은 눈으로 반대편에서 봅니다
+              같은 눈으로 반대편에서 봅니다.
             </>
           }
         />
