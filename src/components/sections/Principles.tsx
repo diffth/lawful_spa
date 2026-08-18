@@ -16,7 +16,7 @@ export const Principles: React.FC = () => {
       <Container>
         <SectionHeader
           label="Promise"
-          title="네 가지를 직접 합니다"
+          title="네 가지를 직접 합니다."
           lead="상담 실장이 상담하고 사무장이 연락하는 구조를 두지 않습니다. 사건을 아는 사람이 처음부터 끝까지 같은 사람이어야 합니다."
         />
 
