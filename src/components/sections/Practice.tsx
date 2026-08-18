@@ -19,8 +19,8 @@ export const Practice: React.FC = () => {
       <Container>
         <SectionHeader
           label="Practice"
-          title="형사를 축으로 봅니다"
-          lead="분야를 넓게 벌리지 않습니다. 수사기관 안에서 직접 다뤄본 영역에 집중합니다."
+          title="가장 자신 있는 형사 분야에 집중합니다."
+          lead="백 가지 일반 법률 사건보다, 부장검사로서 직접 다뤄본 확실한 영역에서 압도적인 차이를 만듭니다."
         />
 
         <div ref={ref} data-reveal className="mt-14 border-t border-line-strong">
