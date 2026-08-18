@@ -28,9 +28,9 @@ export interface Profile {
   title: string;
   /** 소속 법인 — 개인 사이트지만 소속은 명시한다 */
   firm: string;
-  /** 히어로 한 줄 포지셔닝 */
+  /** 히어로 한 줄 포지셔닝 문구. */
   positioning: string;
-  /** 히어로 아래 리드 문장 */
+  /** 히어로 아래 리드 문장. */
   lead: string;
   /** 소개 섹션 본문 */
   paragraphs: string[];
