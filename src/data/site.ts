@@ -39,7 +39,7 @@ export const HERO_FACTS = [
  */
 export const PRINCIPLES = [
   {
-    verb: '직접 상담합니다',
+    verb: '직접 상담합니다.',
     body: '첫 통화부터 변호사가 받습니다. 상담 실장도, 사무장도 거치지 않습니다. 사실관계를 듣고 가능한 결론의 범위를 그 자리에서 솔직하게 말씀드립니다.',
   },
   {
