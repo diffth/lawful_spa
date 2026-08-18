@@ -60,7 +60,7 @@ export const Contact: React.FC = () => {
             <h2 className="mt-4 text-[28px] leading-[1.25] font-semibold tracking-[-0.035em] sm:text-[36px]">
               출석 통보를 받으셨다면
               <br />
-              오늘 연락 주십시오
+              오늘 연락 주십시오.
             </h2>
             <p className="mt-6 max-w-md text-[15px] leading-[1.85] text-on-ink-soft">
               첫 조사 전에 정리할 수 있는 것과 조사 후에 되돌려야 하는 것의 차이는 큽니다.
