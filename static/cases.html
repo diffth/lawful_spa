@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0f14" />
+    <title>해결사례 전체 | 오세영 변호사</title>
+    <meta
+      name="description"
+      content="오세영 변호사가 종결한 사건의 기록. 연월과 처분기관, 죄명과 처분결과를 그대로 싣습니다. 해설이 붙은 사건은 쟁점과 대응 과정을 함께 공개합니다."
+    />
+    <link rel="canonical" href="https://haengdong.co.kr/cases" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="오세영 변호사" />
+    <meta property="og:title" content="해결사례 전체 | 오세영 변호사" />
+    <meta
+      property="og:description"
+      content="연월 · 처분기관 · 죄명 · 처분결과를 그대로 싣습니다. 결과만 나열된 목록은 확인할 방법이 없습니다."
+    />
+    <meta property="og:image" content="/images/og-image.jpg" />
+
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+
+  <body data-page="archive">
+    <!-- 히어로가 없는 화면이라 헤더를 처음부터 흰 배경으로 띄운다 -->
+    <header class="site-header" data-variant="solid">
+      <div class="site-header__progress" aria-hidden="true"></div>
+
+      <div class="container site-header__bar">
+        <a class="brand" href="index.html">
+          오세영
+          <span class="brand__role">변호사</span>
+        </a>
+
+        <nav class="site-nav" aria-label="주요 섹션">
+          <a class="site-nav__link" href="index.html#cases">해결사례</a>
+          <a class="site-nav__link" href="index.html#profile">변호사 소개</a>
+          <a class="site-nav__link" href="index.html#practice">업무분야</a>
+          <a class="site-nav__link" href="index.html#insights">칼럼·언론</a>
+          <a class="site-nav__link" href="index.html#process">상담 절차</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <a class="site-header__tel tabular" href="tel:02-583-6699">02-583-6699</a>
+          <a class="site-header__cta" href="index.html#contact">상담 신청</a>
+
+          <button
+            type="button"
+            class="menu-toggle"
+            aria-expanded="false"
+            aria-label="메뉴 열기"
+            aria-controls="mobile-sheet"
+          >
+            <span class="menu-toggle__box" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="mobile-sheet" id="mobile-sheet">
+      <div class="container">
+        <nav class="mobile-sheet__nav" aria-label="모바일 메뉴">
+          <a class="mobile-sheet__link" href="index.html#cases">해결사례</a>
+          <a class="mobile-sheet__link" href="index.html#profile">변호사 소개</a>
+          <a class="mobile-sheet__link" href="index.html#practice">업무분야</a>
+          <a class="mobile-sheet__link" href="index.html#insights">칼럼·언론</a>
+          <a class="mobile-sheet__link" href="index.html#process">상담 절차</a>
+          <a class="mobile-sheet__link" href="cases.html">해결사례 전체</a>
+        </nav>
+        <div class="mobile-sheet__actions">
+          <a class="mobile-sheet__call" href="tel:02-583-6699">02-583-6699 전화 상담</a>
+          <a class="mobile-sheet__form-link" href="index.html#contact">상담 신청서 작성</a>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!--
+        해결사례 전체 아카이브.
+        랜딩은 12건까지만 보여주고, 쌓인 기록 전체는 여기서 연도별로 읽는다.
+        필터를 쿼리스트링에 두어 업무분야에서 바로 걸어 들어올 수 있게 한다.
+      -->
+      <header class="archive-head">
+        <div class="container">
+          <span class="label">Results Archive</span>
+          <h1 class="archive-head__title">해결사례 전체</h1>
+          <p class="archive-head__lead">
+            연월과 처분기관, 죄명과 처분결과를 그대로 싣습니다. 해설이 붙은 사건은 행을 눌러
+            쟁점과 대응 과정을 보실 수 있습니다.
+          </p>
+          <a class="arrow-link arrow-link--sm archive-head__back" href="index.html">
+            <span aria-hidden="true">←</span> 처음으로
+          </a>
+        </div>
+      </header>
+
+      <div class="archive-body">
+        <div class="container">
+          <div class="case-filters" id="archive-filters">
+            <div class="chip-row">
+              <button type="button" class="chip" data-value="전체" aria-pressed="true">전체</button>
+              <button type="button" class="chip" data-value="형사" aria-pressed="false">형사</button>
+              <button type="button" class="chip" data-value="성범죄" aria-pressed="false">성범죄</button>
+              <button type="button" class="chip" data-value="경제범죄" aria-pressed="false">경제범죄</button>
+              <button type="button" class="chip" data-value="중대재해" aria-pressed="false">중대재해</button>
+            </div>
+            <p class="case-filters__count tabular" id="archive-count">총 20건</p>
+          </div>
+
+          <div class="case-table archive-body__table" id="archive-table"></div>
+
+          <p class="disclaimer">
+            게시된 사례는 의뢰인 식별정보를 제거해 재구성한 것이며, 동일한 결과를 보장하지
+            않습니다. 사건의 결과는 구체적 사실관계와 증거에 따라 달라집니다.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div class="site-footer__brand">
+            <p class="site-footer__name">오세영 변호사</p>
+            <p class="site-footer__firm">법무법인 행복한동행 대표변호사</p>
+            <a class="site-footer__tel tabular" href="tel:02-583-6699">02-583-6699</a>
+            <p class="site-footer__hours">평일 09:00 – 20:00 · 야간 · 주말 긴급 당직</p>
+          </div>
+
+          <div class="site-footer__menu">
+            <p class="site-footer__heading">Menu</p>
+            <nav class="site-footer__nav" aria-label="푸터 메뉴">
+              <a href="index.html#cases">해결사례</a>
+              <a href="index.html#profile">변호사 소개</a>
+              <a href="index.html#practice">업무분야</a>
+              <a href="index.html#insights">칼럼·언론</a>
+              <a href="index.html#process">상담 절차</a>
+              <a href="cases.html">해결사례 전체</a>
+            </nav>
+          </div>
+
+          <div class="site-footer__office">
+            <p class="site-footer__heading">Office</p>
+            <address class="site-footer__address">
+              <span>서울특별시 서초구 서초중앙로 125 로이어즈타워 602호</span>
+              <span>지하철 2·3호선 교대역 8번 출구 앞</span>
+              <span class="tabular">F. 02-583-3375 · E. syoh@haengdong.co.kr</span>
+            </address>
+          </div>
+        </div>
+
+        <div class="site-footer__legal">
+          <p class="site-footer__disclaimer">
+            게시된 사례는 의뢰인 식별정보를 제거해 재구성한 것이며, 동일한 결과를 보장하지
+            않습니다. 사건의 결과는 구체적 사실관계와 증거에 따라 달라집니다.
+          </p>
+          <p class="site-footer__meta tabular">
+            법무법인 행복한동행 · 사업자등록번호 442-35-01262 · ©
+            <span data-current-year>2026</span> 오세영
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="call-bar">
+      <a class="call-bar__tel tabular" href="tel:02-583-6699">전화 상담 02-583-6699</a>
+      <a class="call-bar__form" href="index.html#contact">상담 신청서</a>
+    </div>
+
+    <div class="overlay" id="overlay" hidden>
+      <button type="button" class="overlay__scrim" aria-label="닫기" data-overlay-close></button>
+      <div class="overlay__panel" role="dialog" aria-modal="true" tabindex="-1">
+        <div class="overlay__head">
+          <span class="overlay__label"></span>
+          <button type="button" class="overlay__close" aria-label="닫기" data-overlay-close>×</button>
+        </div>
+        <div class="overlay__body"></div>
+      </div>
+    </div>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
