@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b0f14" />
+    <title>오세영 변호사 | 부장검사 출신 · 성범죄 공인전문검사</title>
+    <meta
+      name="description"
+      content="전 서울중앙지검 부장검사, 사법연수원 교수, 검찰총장 공인전문검사(성범죄) 오세영 변호사. 형사 수사 초기 대응부터 판결까지 변호사가 직접 맡습니다. 서초 교대역."
+    />
+    <meta
+      name="keywords"
+      content="오세영 변호사, 부장검사 출신 변호사, 성범죄 공인전문검사, 형사전문변호사, 사법연수원 교수 출신, 중대재해처벌법, 서초동 형사변호사, 교대역 법률상담"
+    />
+    <link rel="canonical" href="https://haengdong.co.kr/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:site_name" content="오세영 변호사" />
+    <meta property="og:title" content="오세영 변호사 | 부장검사 출신 · 성범죄 공인전문검사" />
+    <meta
+      property="og:description"
+      content="수사 초기의 판단이 결과를 바꿉니다. 수사기관 안에서 26년을 보낸 변호사가 직접 상담하고 직접 변론합니다."
+    />
+    <meta property="og:image" content="/images/og-image.jpg" />
+
+    <!-- 본문 · UI 단일 서체 -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <!-- 개인 브랜드 사이트라 Person/Attorney 구조화 데이터가 검색 노출에 직접 작용한다 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Attorney",
+        "name": "오세영 변호사",
+        "url": "https://haengdong.co.kr/",
+        "telephone": "+82-2-583-6699",
+        "email": "syoh@haengdong.co.kr",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "서초중앙로 125 로이어즈타워 602호",
+          "addressLocality": "서초구",
+          "addressRegion": "서울특별시",
+          "addressCountry": "KR"
+        },
+        "areaServed": "KR",
+        "knowsLanguage": "ko",
+        "employee": {
+          "@type": "Person",
+          "name": "오세영",
+          "jobTitle": "대표변호사",
+          "worksFor": {
+            "@type": "Organization",
+            "name": "법무법인 행복한동행"
+          },
+          "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "서울대학교" },
+            { "@type": "CollegeOrUniversity", "name": "연세대학교 대학원 법학과" }
+          ],
+          "hasCredential": [
+            "제41회 사법시험 합격 · 사법연수원 31기",
+            "검찰총장 공인전문검사 인증 (성범죄, 2020)",
+            "전 서울중앙지방검찰청 부장검사",
+            "전 사법연수원 · 법무연수원 교수"
+          ]
+        }
+      }
+    </script>
+  </head>
+
+  <body data-page="landing">
+    <!-- 상단 고정 내비 — 랜딩은 어두운 히어로 위에 겹쳐 띄운다 -->
+    <header class="site-header is-inverted" data-variant="overlay">
+      <div class="site-header__progress" aria-hidden="true"></div>
+
+      <div class="container site-header__bar">
+        <a class="brand" href="index.html">
+          오세영
+          <span class="brand__role">변호사</span>
+        </a>
+
+        <nav class="site-nav" aria-label="주요 섹션">
+          <a class="site-nav__link" data-section="cases" href="#cases">해결사례</a>
+          <a class="site-nav__link" data-section="profile" href="#profile">변호사 소개</a>
+          <a class="site-nav__link" data-section="practice" href="#practice">업무분야</a>
+          <a class="site-nav__link" data-section="insights" href="#insights">칼럼·언론</a>
+          <a class="site-nav__link" data-section="process" href="#process">상담 절차</a>
+        </nav>
+
+        <div class="site-header__actions">
+          <a class="site-header__tel tabular" href="tel:02-583-6699">02-583-6699</a>
+          <a class="site-header__cta" href="#contact">상담 신청</a>
+
+          <button
+            type="button"
+            class="menu-toggle"
+            aria-expanded="false"
+            aria-label="메뉴 열기"
+            aria-controls="mobile-sheet"
+          >
+            <span class="menu-toggle__box" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!--
+      모바일 시트는 header 밖에 둔다.
+      header 가 backdrop-filter 를 쓰는 순간 fixed 자손의 컨테이닝 블록이 header 로 바뀌어
+      bottom:0 이 헤더 높이 기준으로 잡히고 시트가 1px 로 무너진다.
+    -->
+    <div class="mobile-sheet" id="mobile-sheet">
+      <div class="container">
+        <nav class="mobile-sheet__nav" aria-label="모바일 메뉴">
+          <a class="mobile-sheet__link" href="#cases">해결사례</a>
+          <a class="mobile-sheet__link" href="#profile">변호사 소개</a>
+          <a class="mobile-sheet__link" href="#practice">업무분야</a>
+          <a class="mobile-sheet__link" href="#insights">칼럼·언론</a>
+          <a class="mobile-sheet__link" href="#process">상담 절차</a>
+          <a class="mobile-sheet__link" href="cases.html">해결사례 전체</a>
+        </nav>
+        <div class="mobile-sheet__actions">
+          <a class="mobile-sheet__call" href="tel:02-583-6699">02-583-6699 전화 상담</a>
+          <a class="mobile-sheet__form-link" href="#contact">상담 신청서 작성</a>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <!-- 표지 — 이 사이트에서 유일하게 크게 말하는 자리 -->
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="hero__grid" data-reveal-root data-stagger="90">
+            <div class="hero__copy">
+              <span class="hero__eyebrow tabular" data-reveal>OH SE YOUNG</span>
+
+              <h1 class="hero__title" data-reveal>수사기관 안에서 26년,
+이제 반대편에 앉습니다</h1>
+
+              <p class="hero__lead" data-reveal>
+                서울중앙지검 부장검사와 사법연수원 교수를 지냈습니다. 검사가 무엇을 보고 판사가
+                무엇을 따지는지 아는 사람이 상담부터 법정까지 직접 맡습니다.
+              </p>
+
+              <div class="hero__actions" data-reveal>
+                <a class="btn btn--on-ink" href="#contact">상담 신청</a>
+                <a class="btn btn--outline-on-ink" href="#cases">해결사례 보기</a>
+                <a class="hero__tel tabular" href="tel:02-583-6699">02-583-6699</a>
+              </div>
+            </div>
+
+            <div class="hero__figure" data-reveal>
+              <div class="hero__portrait-frame">
+                <img
+                  class="hero__portrait"
+                  src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+                  alt="오세영 변호사"
+                  loading="eager"
+                  width="1000"
+                  height="1250"
+                />
+              </div>
+              <div class="hero__caption">
+                <span class="hero__caption-name">
+                  오세영
+                  <span class="hero__caption-role">변호사</span>
+                </span>
+                <span class="hero__caption-note">전 서울중앙지검 부장검사</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 자격 스트립 — 히어로에 접합해 첫 화면 안에서 근거를 준다 -->
+        <div class="hero__facts-wrap">
+          <div class="container">
+            <dl class="hero__facts">
+              <div class="hero__fact">
+                <dt>사법시험</dt>
+                <dd>제41회 합격 · 사법연수원 31기</dd>
+              </div>
+              <div class="hero__fact">
+                <dt>검찰</dt>
+                <dd>서울중앙 · 남부 · 인천지검 부장검사</dd>
+              </div>
+              <div class="hero__fact">
+                <dt>공인전문</dt>
+                <dd>검찰총장 공인전문검사 (성범죄, 2020)</dd>
+              </div>
+              <div class="hero__fact">
+                <dt>교수</dt>
+                <dd>사법연수원 · 법무연수원 교수 역임</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        해결사례 — 스크롤 첫 화면 직후에 놓는다.
+        형사사건 의뢰인이 가장 먼저 확인하려는 것은 "이 사람이 실제로 끝내봤는가"다.
+      -->
+      <section class="section section--surface" id="cases">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-head__main">
+              <span class="label">Results</span>
+              <h2 class="section-head__title">
+                종결된 사건의 기록.<br />연월과 처분기관까지 그대로 둡니다.
+              </h2>
+              <p class="section-head__lead">
+                결과만 나열된 목록은 확인할 방법이 없습니다. 어느 단계에서 어떻게 끝났는지를
+                함께 적습니다.
+              </p>
+            </div>
+            <div class="section-head__aside">
+              <a class="arrow-link" href="cases.html">
+                전체 사례 보기 <span class="arrow-link__mark" aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="cases__body" data-reveal-root data-stagger="0" data-reveal>
+            <div class="case-filters" id="cases-filters">
+              <div class="chip-row">
+                <button type="button" class="chip" data-value="전체" aria-pressed="true">전체</button>
+                <button type="button" class="chip" data-value="형사" aria-pressed="false">형사</button>
+                <button type="button" class="chip" data-value="성범죄" aria-pressed="false">성범죄</button>
+                <button type="button" class="chip" data-value="경제범죄" aria-pressed="false">경제범죄</button>
+                <button type="button" class="chip" data-value="중대재해" aria-pressed="false">중대재해</button>
+              </div>
+              <p class="case-filters__count tabular" id="cases-count">총 20건</p>
+            </div>
+
+            <div class="case-table" id="cases-table"></div>
+
+            <div class="cases__more" id="cases-more" hidden>
+              <a class="arrow-link" id="cases-more-link" href="cases.html"
+                >나머지 8건 더 보기 <span class="arrow-link__mark" aria-hidden="true">→</span></a
+              >
+            </div>
+
+            <p class="disclaimer">
+              게시된 사례는 의뢰인 식별정보를 제거해 재구성한 것이며, 동일한 결과를 보장하지
+              않습니다. 사건의 결과는 구체적 사실관계와 증거에 따라 달라집니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 변호사 소개 — 서술 · 연표 · 인증 -->
+      <section class="section section--sunken" id="profile">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-head__main">
+              <span class="label">Profile</span>
+              <h2 class="section-head__title">
+                검사로 26년,<br />같은 눈으로 반대편에서 봅니다
+              </h2>
+            </div>
+          </div>
+
+          <div class="profile__grid" data-reveal-root data-stagger="70">
+            <!-- 서술 — 연표가 훨씬 길어 왼쪽이 비므로 붙잡아 둔다 -->
+            <div class="profile__intro" data-reveal>
+              <div class="profile__paragraphs">
+                <p>
+                  검사로 일하는 동안 저는 사건을 만드는 쪽에 있었습니다. 어떤 진술이 기록에
+                  어떻게 남고, 그 한 줄이 몇 달 뒤 법정에서 어떻게 되돌아오는지를 매일 봤습니다.
+                  수사는 논리가 아니라 순서로 굴러갑니다. 그 순서를 아는 것과 모르는 것의 차이가
+                  결과를 가릅니다.
+                </p>
+                <p>
+                  사법연수원과 법무연수원에서 연수생과 신임 검사를 지도했습니다. 무엇이 유죄를
+                  만들고 무엇이 무죄를 만드는지를 가르치는 일이었습니다. 2020년에는 성범죄
+                  분야에서 검찰총장 공인전문검사 인증을 받았습니다. 이 분야의 판단 기준을 안에서
+                  세워본 경험이 지금 변론의 토대입니다.
+                </p>
+                <p>
+                  지금은 반대편에 앉아 있습니다. 달라진 것은 자리뿐이고, 사건을 읽는 방식은
+                  같습니다. 첫 조사 전에 연락 주시면 가장 많은 것을 바꿀 수 있습니다.
+                </p>
+              </div>
+
+              <div class="profile__education">
+                <span class="label">Education</span>
+                <ul>
+                  <li>서울대학교 사회과학대학 국제경제학과 졸업</li>
+                  <li>연세대학교 대학원 법학과 법학석사</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- 연표 -->
+            <div class="profile__career" data-reveal>
+              <span class="label">Career</span>
+              <div class="career">
+                <div class="career__phase">
+                  <div>
+                    <p class="career__label">자격</p>
+                    <p class="career__period tabular">1999 – 2002</p>
+                  </div>
+                  <ul class="career__items">
+                    <li>제41회 사법시험 합격</li>
+                    <li>사법연수원 제31기 수료</li>
+                  </ul>
+                </div>
+
+                <div class="career__phase">
+                  <div>
+                    <p class="career__label">검사</p>
+                    <p class="career__period tabular">일선 검찰청</p>
+                  </div>
+                  <ul class="career__items">
+                    <li>공정거래위원회 사무관</li>
+                    <li>서울북부지방검찰청 검사</li>
+                    <li>수원지방검찰청 안산지청 검사</li>
+                    <li>대전지방검찰청 검사</li>
+                    <li>대구지방검찰청 김천지청 검사</li>
+                  </ul>
+                </div>
+
+                <div class="career__phase">
+                  <div>
+                    <p class="career__label">교수</p>
+                    <p class="career__period tabular">사법연수원 43기 – 46기</p>
+                  </div>
+                  <ul class="career__items">
+                    <li>서울중앙지방검찰청 부부장검사</li>
+                    <li>사법연수원 교수 — 제43기~제46기 사법연수생 지도</li>
+                    <li>법무연수원 용인분원 교수 — 로스쿨 3기·6기 신임검사 지도</li>
+                  </ul>
+                </div>
+
+                <div class="career__phase">
+                  <div>
+                    <p class="career__label">부장검사</p>
+                    <p class="career__period tabular">서울중앙 · 서울남부 · 인천</p>
+                  </div>
+                  <ul class="career__items">
+                    <li>서울중앙지방검찰청 부장검사</li>
+                    <li>서울남부지방검찰청 부장검사</li>
+                    <li>인천지방검찰청 부장검사</li>
+                    <li>수원지방검찰청 안양지청 인권보호관</li>
+                    <li>서울고등검찰청 검사</li>
+                  </ul>
+                </div>
+
+                <div class="career__phase">
+                  <div>
+                    <p class="career__label">변호사</p>
+                    <p class="career__period tabular">현재</p>
+                  </div>
+                  <ul class="career__items">
+                    <li>법무법인 행복한동행 대표변호사</li>
+                    <li>해양경찰청 고문변호사</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 인증 · 위촉 -->
+              <div class="credentials">
+                <span class="label">Credentials</span>
+                <dl class="credentials__grid">
+                  <div class="credentials__item">
+                    <dt class="tabular">2020</dt>
+                    <dd>
+                      검찰총장 공인전문검사 인증
+                      <span class="credentials__issuer">성범죄 분야</span>
+                    </dd>
+                  </div>
+                  <div class="credentials__item">
+                    <dt class="tabular">현재</dt>
+                    <dd>해양경찰청 고문변호사</dd>
+                  </div>
+                  <div class="credentials__item">
+                    <dt class="tabular">전직</dt>
+                    <dd>
+                      사법연수원 · 법무연수원 교수
+                      <span class="credentials__issuer">연수생 및 신임검사 지도</span>
+                    </dd>
+                  </div>
+                  <div class="credentials__item">
+                    <dt class="tabular">전직</dt>
+                    <dd>수원지검 안양지청 인권보호관</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        "직접" 4원칙.
+        형사사건 의뢰인이 가장 크게 데는 지점이
+        '상담한 변호사와 법정에 선 변호사가 다르다'는 것이라 이걸 정면에 둔다.
+      -->
+      <section class="section section--surface" id="principles">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-head__main">
+              <span class="label">Promise</span>
+              <h2 class="section-head__title">네 가지를 직접 합니다</h2>
+              <p class="section-head__lead">
+                상담 실장이 상담하고 사무장이 연락하는 구조를 두지 않습니다. 사건을 아는 사람이
+                처음부터 끝까지 같은 사람이어야 합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="principles" data-reveal-root data-stagger="70">
+            <div class="principles__item" data-reveal>
+              <span class="principles__no tabular">01</span>
+              <h3 class="principles__verb">직접 상담합니다</h3>
+              <p class="principles__body">
+                첫 통화부터 변호사가 받습니다. 상담 실장도, 사무장도 거치지 않습니다. 사실관계를
+                듣고 가능한 결론의 범위를 그 자리에서 솔직하게 말씀드립니다.
+              </p>
+            </div>
+            <div class="principles__item" data-reveal>
+              <span class="principles__no tabular">02</span>
+              <h3 class="principles__verb">직접 소통합니다</h3>
+              <p class="principles__body">
+                진행 상황을 전달받는 것이 아니라 담당 변호사와 바로 이야기하십시오. 중간에 사람이
+                바뀌지 않고, 연락이 끊기는 구간을 만들지 않습니다.
+              </p>
+            </div>
+            <div class="principles__item" data-reveal>
+              <span class="principles__no tabular">03</span>
+              <h3 class="principles__verb">직접 참여합니다</h3>
+              <p class="principles__body">
+                경찰 조사, 검찰 조사, 법정. 사건의 방향이 정해지는 자리에 변호사가 함께 앉습니다.
+                조사 전 진술 정리도 변호사가 직접 합니다.
+              </p>
+            </div>
+            <div class="principles__item" data-reveal>
+              <span class="principles__no tabular">04</span>
+              <h3 class="principles__verb">직접 변론합니다</h3>
+              <p class="principles__body">
+                의견서와 변론요지서는 사건을 아는 사람이 써야 합니다. 서면 작성부터 최종 변론까지
+                담당 변호사가 자기 이름으로 씁니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--
+        업무분야 — 아코디언.
+        다섯 분야를 카드로 늘어놓으면 전부 같은 무게로 읽힌다.
+        한 번에 하나만 열어 형사를 축으로 읽히게 한다.
+      -->
+      <section class="section section--sunken" id="practice">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-head__main">
+              <span class="label">Practice</span>
+              <h2 class="section-head__title">형사를 축으로 봅니다</h2>
+              <p class="section-head__lead">
+                분야를 넓게 벌리지 않습니다. 수사기관 안에서 직접 다뤄본 영역에 집중합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="practice" id="practice-list" data-reveal-root data-stagger="0" data-reveal>
+            <div class="practice__item">
+              <h3>
+                <button
+                  type="button"
+                  class="practice__trigger"
+                  aria-expanded="true"
+                  aria-controls="practice-panel-criminal"
+                >
+                  <span class="practice__no tabular">01</span>
+                  <span class="practice__title">형사 일반</span>
+                  <span class="practice__plus" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="practice__panel" id="practice-panel-criminal">
+                <div>
+                  <p class="practice__summary">
+                    경찰 첫 조사부터 구속영장실질심사, 1심과 상소심까지. 사건이 어느 단계에 있든
+                    지금 무엇을 해야 하는지부터 정리합니다.
+                  </p>
+                  <a class="arrow-link arrow-link--sm practice__link" href="cases.html?category=%ED%98%95%EC%82%AC">
+                    형사 사례 보기 <span class="arrow-link__mark" aria-hidden="true">→</span>
+                  </a>
+                </div>
+                <ul class="practice__items">
+                  <li>구속영장실질심사 · 구속적부심 · 보석</li>
+                  <li>경찰 조사 입회 및 진술 준비</li>
+                  <li>폭행 · 상해 · 협박 · 스토킹</li>
+                  <li>음주운전 · 위험운전치사상 · 뺑소니</li>
+                  <li>마약 · 도박 · 보이스피싱 가담</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="practice__item">
+              <h3>
+                <button
+                  type="button"
+                  class="practice__trigger"
+                  aria-expanded="false"
+                  aria-controls="practice-panel-sexual"
+                >
+                  <span class="practice__no tabular">02</span>
+                  <span class="practice__title">성범죄</span>
+                  <span class="practice__plus" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="practice__panel" id="practice-panel-sexual" hidden>
+                <div>
+                  <p class="practice__summary">
+                    2020년 검찰총장 공인전문검사(성범죄) 인증을 받은 분야입니다. 판단 기준을
+                    수사기관 안에서 세워본 경험으로 대응합니다.
+                  </p>
+                  <a class="arrow-link arrow-link--sm practice__link" href="cases.html?category=%EC%84%B1%EB%B2%94%EC%A3%84">
+                    성범죄 사례 보기 <span class="arrow-link__mark" aria-hidden="true">→</span>
+                  </a>
+                </div>
+                <ul class="practice__items">
+                  <li>강제추행 · 준강제추행 · 준강간</li>
+                  <li>성폭력처벌법위반(카메라등이용촬영)</li>
+                  <li>아동·청소년의성보호에관한법률위반</li>
+                  <li>통신매체이용음란 · 성매매</li>
+                  <li>무고 및 피해자 대리</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="practice__item">
+              <h3>
+                <button
+                  type="button"
+                  class="practice__trigger"
+                  aria-expanded="false"
+                  aria-controls="practice-panel-economic"
+                >
+                  <span class="practice__no tabular">03</span>
+                  <span class="practice__title">경제범죄</span>
+                  <span class="practice__plus" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="practice__panel" id="practice-panel-economic" hidden>
+                <div>
+                  <p class="practice__summary">
+                    자금 흐름을 계좌 단위로 다시 그리는 일에서 승패가 갈립니다. 공소사실이 전제한
+                    흐름과 실제 흐름의 차이를 찾습니다.
+                  </p>
+                  <a class="arrow-link arrow-link--sm practice__link" href="cases.html?category=%EA%B2%BD%EC%A0%9C%EB%B2%94%EC%A3%84">
+                    경제범죄 사례 보기 <span class="arrow-link__mark" aria-hidden="true">→</span>
+                  </a>
+                </div>
+                <ul class="practice__items">
+                  <li>사기 · 특정경제범죄가중처벌법위반</li>
+                  <li>횡령 · 배임 · 배임수재</li>
+                  <li>자본시장법위반 · 부정거래</li>
+                  <li>조세포탈 및 허위세금계산서</li>
+                  <li>기업 내부 비위 조사 대응</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="practice__item">
+              <h3>
+                <button
+                  type="button"
+                  class="practice__trigger"
+                  aria-expanded="false"
+                  aria-controls="practice-panel-safety"
+                >
+                  <span class="practice__no tabular">04</span>
+                  <span class="practice__title">중대재해 · 산업안전</span>
+                  <span class="practice__plus" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="practice__panel" id="practice-panel-safety" hidden>
+                <div>
+                  <p class="practice__summary">
+                    사고 이후가 아니라 사고 이전의 기록이 형사책임을 가릅니다. 사고 당일 현장
+                    대응부터 경영책임자 방어까지 맡습니다.
+                  </p>
+                  <a class="arrow-link arrow-link--sm practice__link" href="cases.html?category=%EC%A4%91%EB%8C%80%EC%9E%AC%ED%95%B4">
+                    중대재해 사례 보기 <span class="arrow-link__mark" aria-hidden="true">→</span>
+                  </a>
+                </div>
+                <ul class="practice__items">
+                  <li>중대재해처벌법위반 수사 대응</li>
+                  <li>경영책임자 형사책임 방어</li>
+                  <li>산업안전보건법위반 · 근로감독관 조사</li>
+                  <li>안전보건관리체계 사전 진단</li>
+                  <li>유가족 합의 및 후속 절차</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="practice__item">
+              <h3>
+                <button
+                  type="button"
+                  class="practice__trigger"
+                  aria-expanded="false"
+                  aria-controls="practice-panel-fair-trade"
+                >
+                  <span class="practice__no tabular">05</span>
+                  <span class="practice__title">공정거래 · 기업 형사</span>
+                  <span class="practice__plus" aria-hidden="true">+</span>
+                </button>
+              </h3>
+              <div class="practice__panel" id="practice-panel-fair-trade" hidden>
+                <div>
+                  <p class="practice__summary">
+                    공정거래위원회 사무관으로 일한 이력이 있습니다. 조사 단계에서 형사 리스크가
+                    어디로 번질지를 함께 봅니다.
+                  </p>
+                  <a class="arrow-link arrow-link--sm practice__link" href="cases.html?category=%EA%B2%BD%EC%A0%9C%EB%B2%94%EC%A3%84">
+                    경제범죄 사례 보기 <span class="arrow-link__mark" aria-hidden="true">→</span>
+                  </a>
+                </div>
+                <ul class="practice__items">
+                  <li>입찰담합 · 부당공동행위</li>
+                  <li>공정거래위원회 현장조사 대응</li>
+                  <li>하도급법 · 대리점법 분쟁</li>
+                  <li>영업비밀 침해 및 업무상배임</li>
+                  <li>기업 형사 컴플라이언스 자문</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
