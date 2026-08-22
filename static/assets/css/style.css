@@ -1,0 +1,382 @@
+@charset "utf-8";
+
+/* ==================================================================
+   오세영 변호사 개인 홈페이지 — 스타일시트
+
+   디자인 토큰 · 모던 미니멀
+   흰 지면 · 잉크(다크 앵커) · 시그널 블루 1색
+   명조체 / 그라데이션 / 글래스 / 컬러 배지는 이 시스템에 존재하지 않는다.
+   위계는 크기 · 굵기 · 자간으로만 만든다.
+
+   브레이크포인트 — sm 640px / md 768px / lg 1024px
+================================================================== */
+
+:root {
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
+    system-ui, "Apple SD Gothic Neo", sans-serif;
+
+  /* 지면 */
+  --color-surface: #ffffff;
+  --color-sunken: #f5f7f9;
+
+  /* 잉크 — 히어로 · 상담 등 선언하는 구간 */
+  --color-ink: #0b0f14;
+  --color-ink-2: #141a22;
+
+  /* 괘선 */
+  --color-line: #e4e8ec;
+  --color-line-strong: #cbd2d9;
+
+  /* 본문 */
+  --color-text: #0b0f14;
+  --color-text-soft: #4a5563;
+  --color-text-muted: #8a939e;
+
+  /* 잉크 위 본문 */
+  --color-on-ink: #f2f5f8;
+  --color-on-ink-soft: #a7b0ba;
+
+  /* 강조 — 활성 칩 · 링크 · 포커스 링 · 데이터 라벨에만 */
+  --color-accent: #2f6bff;
+  --color-accent-ink: #6e9bff;
+}
+
+/* ------------------------------------------------------------------
+   초기화 · 기본
+------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0 solid var(--color-line);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* 한글은 어절 단위로 끊어야 표제가 깨지지 않는다 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 1 auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.03em;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+address {
+  font-style: normal;
+}
+
+/* 고정 헤더에 표제가 가리지 않도록 */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+::selection {
+  background: var(--color-ink);
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* 스크롤바 — 무채색 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-sunken);
+}
+::-webkit-scrollbar-thumb {
+  background: #d3d9df;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b6bec6;
+}
+
+/* 연월 · 사건번호 등 숫자 정렬 — 아카이브 표에서 필수 */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ------------------------------------------------------------------
+   진입 모션 — 이 사이트가 쓰는 유일한 애니메이션.
+   reveal.js 가 data-revealed 를 켠다.
+------------------------------------------------------------------- */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 420ms cubic-bezier(0.2, 0.6, 0.2, 1),
+    transform 420ms cubic-bezier(0.2, 0.6, 0.2, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal][data-revealed="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal],
+  [data-reveal][data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ------------------------------------------------------------------
+   공용 조판 — 여백 · 표제 · 버튼을 여기서 한 번만 정한다.
+   그림자와 라운드는 쓰지 않는다.
+------------------------------------------------------------------- */
+
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.section {
+  padding-block: 5rem;
+}
+.section--surface {
+  background-color: var(--color-surface);
+}
+.section--sunken {
+  background-color: var(--color-sunken);
+}
+.section--ink {
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+}
+
+/* 표제 위 작은 라벨 */
+.label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-accent);
+}
+.label--ink {
+  color: var(--color-accent-ink);
+}
+
+/* 섹션 표제 */
+.section-head {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.section-head__main {
+  max-width: 42rem;
+}
+.section-head__title {
+  font-size: 26px;
+  line-height: 1.28;
+  font-weight: 600;
+  color: var(--color-text);
+}
+.label + .section-head__title {
+  margin-top: 1rem;
+}
+.section-head--ink .section-head__title {
+  color: var(--color-on-ink);
+}
+.section-head__lead {
+  margin-top: 1.5rem;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--color-text-soft);
+}
+.section-head--ink .section-head__lead {
+  color: var(--color-on-ink-soft);
+}
+.section-head__aside {
+  flex-shrink: 0;
+}
+
+/* 버튼 ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background-color 200ms, color 200ms, border-color 200ms;
+}
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.btn--solid {
+  background-color: var(--color-ink);
+  color: #ffffff;
+}
+.btn--solid:hover {
+  background-color: var(--color-ink-2);
+}
+.btn--outline {
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-text);
+}
+.btn--outline:hover {
+  border-color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: #ffffff;
+}
+.btn--on-ink {
+  background-color: #ffffff;
+  color: var(--color-ink);
+}
+.btn--on-ink:hover {
+  background-color: var(--color-sunken);
+}
+.btn--outline-on-ink {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: var(--color-on-ink);
+}
+.btn--outline-on-ink:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 본문 안에서 다음 지면으로 넘기는 텍스트 링크 */
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid var(--color-line-strong);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+  transition: color 200ms, border-color 200ms;
+}
+.arrow-link:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+.arrow-link__mark {
+  transition: transform 200ms;
+}
+.arrow-link:hover .arrow-link__mark {
+  transform: translateX(4px);
+}
+.arrow-link--sm {
+  font-size: 13px;
+}
+.arrow-link--ink {
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--color-on-ink);
+}
+.arrow-link--ink:hover {
+  border-color: var(--color-accent-ink);
+  color: var(--color-accent-ink);
+}
+
+/* 필터 칩 --------------------------------------------------------- */
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.chip {
+  border: 1px solid var(--color-line-strong);
+  padding: 0.5rem 1rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-soft);
+  transition: background-color 150ms, color 150ms, border-color 150ms;
+}
+.chip:hover {
+  border-color: var(--color-ink);
+  color: var(--color-text);
+}
+.chip[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
