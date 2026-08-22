@@ -1,6 +1,6 @@
 # 오세영 변호사 개인 홈페이지
 
-부장검사 · 사법연수원 교수 출신 **오세영 변호사**의 1인 개인 홈페이지입니다. **React + Vite + TypeScript + Tailwind CSS** 기반 SPA이며 **Cloudflare Pages** 정적 호스팅에 그대로 배포됩니다.
+부장검사 · 사법연수원 교수 출신 **오세영 변호사**의 1인 개인 홈페이지입니다. 빌드 도구 없는 **HTML · CSS · JavaScript** 정적 사이트이며, 파일을 그대로 올리면 동작합니다(**Cloudflare Pages** 기준).
 
 법인 사이트가 아니라 개인 사이트이므로, 무게중심은 법인 소개가 아니라 **해결사례와 칼럼**에 있습니다.
 
@@ -11,11 +11,13 @@
 랜딩 한 장으로 읽히되, 쌓이는 콘텐츠(사례·칼럼)에는 고유 주소를 준다는 원칙입니다. 주요 안내 문구 및 헤드라인은 깔끔한 완성도를 위해 마침표(.)로 마감합니다.
 
 ```
-/                 랜딩 (아래 순서로 이어지는 10개 섹션)
-/cases            해결사례 전체 아카이브 (연도 그룹 · ?category= 필터)
-/cases/:id        사례 해설 — 랜딩/아카이브 위에 오버레이
-/insights/:id     칼럼 전문 — 오버레이
+index.html            랜딩 (아래 순서로 이어지는 10개 섹션)
+cases.html            해결사례 전체 아카이브 (연도 그룹 · ?category= 필터)
+?case=:id             사례 해설 — 랜딩/아카이브 위에 오버레이
+?insight=:id          칼럼 전문 — 오버레이
 ```
+
+상세는 `history.pushState`로 쌓기 때문에 **뒤로가기가 곧 닫기**이고, 주소를 직접 열어 들어와도 배경 위에 그대로 뜹니다. 아카이브에서 연 사례는 닫을 때 걸어둔 분야 필터가 유지됩니다.
 
 섹션 순서는 설득의 순서입니다.
 
@@ -45,17 +47,18 @@
 - **면 대신 선** : 그림자를 쓰지 않고 1px 괘선과 여백으로 구분합니다. 모서리는 각을 살립니다.
 - **모션** : 진입 시 `opacity + translateY` 한 종류만. `prefers-reduced-motion: reduce`면 전면 정지합니다.
 
-토큰은 `src/index.css`의 `@theme` 블록 한 곳에, 조판 요소(`Container` · `Section` · `SectionHeader` · `Button` · `Chip` · `ArrowLink`)는 `src/components/primitives.tsx`에 모여 있습니다. 새 화면은 이 둘만 쓰면 톤이 어긋나지 않습니다.
+토큰은 `assets/css/style.css` 맨 위 `:root` 한 곳에, 공용 조판 요소(`.container` · `.section` · `.section-head` · `.btn` · `.chip` · `.arrow-link`)는 그 바로 아래에 모여 있습니다. 새 화면은 이 둘만 쓰면 톤이 어긋나지 않습니다. 반응형 규칙은 파일 끝의 미디어 쿼리 블록(sm 640 / md 768 / lg 1024)에 한데 모아 두었습니다.
 
 ---
 
 ## 기술 스택
 
-- **Framework** : React 19 (TypeScript)
-- **Build Tool** : Vite
-- **Styling** : Tailwind CSS v4 (`@theme` 토큰)
-- **Routing** : React Router DOM — 앵커 스크롤 + 배경 위치(`state.background`) 기반 오버레이 라우팅
+- **Markup** : HTML5 (빌드 단계 없음)
+- **Styling** : 단일 CSS 파일 · CSS 사용자 지정 속성 토큰
+- **Script** : 의존성 없는 바닐라 JavaScript (클래식 스크립트 2개)
 - **배포 타깃** : Cloudflare Pages
+
+외부에서 받아오는 것은 Pretendard 웹폰트(jsDelivr)와 히어로 초상 사진(현재 Unsplash 자리표시자)뿐입니다.
 
 ---
 
@@ -63,66 +66,42 @@
 
 ```
 lawful_spa/
-├── public/
-│   ├── _redirects                 # Cloudflare Pages SPA 라우팅 (404 방지)
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   ├── primitives.tsx         # 공용 조판 요소 (Container/Section/Button/Chip/…)
-│   │   ├── SiteHeader.tsx         # 고정 내비 + 스크롤스파이 + 모바일 시트
-│   │   ├── SiteFooter.tsx
-│   │   ├── MobileCallBar.tsx      # 모바일 하단 고정 전화 · 상담 CTA
-│   │   ├── CaseTable.tsx          # 해결사례 아카이브 표 (랜딩/아카이브 공용)
-│   │   ├── DetailOverlay.tsx      # 포커스 트랩 · Esc · 스크롤 락 오버레이
-│   │   └── sections/              # 랜딩 10개 섹션
-│   ├── hooks/
-│   │   ├── useConsultationForm.ts # 상담 폼 상태·검증·제출
-│   │   ├── useScrollSpy.ts        # 현재 섹션 판별
-│   │   ├── useReveal.ts           # 진입 모션 (IntersectionObserver)
-│   │   └── useLockBodyScroll.ts
-│   ├── data/
-│   │   ├── profile.ts             # 오세영 변호사 프로필 · 연표 · 인증
-│   │   ├── site.ts                # 연락처 · 내비 · 4원칙 · 절차 · 체크리스트 · FAQ
-│   │   ├── practice.ts            # 업무분야 5종
-│   │   ├── cases.ts               # 해결사례 아카이브
-│   │   └── insights.ts            # 칼럼 · 언론 · 영상
-│   ├── pages/
-│   │   ├── Landing.tsx            # 원페이지 랜딩 조립
-│   │   ├── CaseArchive.tsx        # /cases 전체 아카이브
-│   │   ├── CaseDetail.tsx         # /cases/:id 오버레이
-│   │   └── InsightDetail.tsx      # /insights/:id 오버레이
-│   ├── types/index.ts             # 도메인 타입 (Profile/Case/Insight/PracticeArea)
-│   ├── App.tsx                    # 라우터 + 스크롤 관리 + 오버레이 라우팅
-│   ├── main.tsx
-│   └── index.css                  # 디자인 토큰 및 base 스타일
-├── index.html                     # SEO 메타태그, Attorney JSON-LD, 폰트
-├── vite.config.ts
-└── tsconfig.json
+├── index.html          랜딩 원페이지 — SEO 메타태그, Attorney JSON-LD, 폰트,
+│                       10개 섹션 마크업, 칼럼 본문 <template>
+├── cases.html          해결사례 전체 아카이브
+├── favicon.svg
+└── assets/
+    ├── css/
+    │   └── style.css   디자인 토큰 · 조판 · 섹션별 규칙 · 반응형
+    └── js/
+        ├── data.js     해결사례 목록(CASES) · 분야 · 면책 문구
+        └── main.js     배경 스크롤 잠금 · 진입 모션 · 고정 헤더 · 스크롤스파이
+                        · 사례 표 렌더링 · 필터 · 아코디언 · 상담 폼 · 상세 오버레이
 ```
 
 ### 콘텐츠를 갈아끼우는 곳
 
-UI와 데이터가 완전히 분리되어 있습니다. 실제 자료를 받으면 아래 파일만 교체하면 됩니다.
-
-| 바꿀 것 | 파일 |
+| 바꿀 것 | 위치 |
 |---|---|
-| 해결사례 목록 | `src/data/cases.ts` — 연월·처분기관·죄명·처분결과 네 항목이면 한 행이 성립합니다 |
-| 칼럼·언론 | `src/data/insights.ts` |
-| 약력·초상 사진 | `src/data/profile.ts` (사진은 `PROFILE.portrait` 한 줄) |
-| 연락처·문구 | `src/data/site.ts` |
+| 해결사례 목록 | `assets/js/data.js`의 `CASES` — 연월·처분기관·죄명·처분결과 네 항목이면 한 행이 성립합니다. 해설을 붙일 사건에만 `detail`을 답니다 |
+| 칼럼·언론 | `index.html`의 `#insights` 목록 + 맨 아래 `<template id="insight-…">` 본문 (`data-id`로 짝을 맞춥니다) |
+| 약력·초상 사진 | `index.html`의 `#profile` 섹션과 `.hero__portrait`의 `src` 한 줄 |
+| 연락처·문구 | `index.html` · `cases.html` (헤더 · 히어로 · 상담 · 푸터 · 모바일 바에 전화번호가 반복 등장하므로 함께 고쳐야 합니다) |
+
+해결사례만 데이터 파일로 분리한 이유는 랜딩(최근 12건)과 아카이브(연도별 전체)가 같은 목록을 서로 다른 형태로 쓰기 때문입니다. 나머지 지면은 HTML에 그대로 적혀 있어 검색엔진이 스크립트 없이도 읽습니다.
 
 ---
 
-## 로컬 개발 및 빌드
+## 로컬 확인
+
+빌드가 없습니다. 정적 서버로 열기만 하면 됩니다.
 
 ```bash
-npm install      # 의존성 설치
-npm run dev      # 개발 서버
-npm run build    # dist 번들 생성
-npm run preview  # 빌드 결과 미리보기
+python3 -m http.server 4321
+# http://localhost:4321
 ```
 
-타입 검사는 `npx tsc --noEmit`으로 확인합니다.
+`file://`로 직접 열어도 대부분 동작하지만, 상세 오버레이의 주소 갱신(`history.pushState`)은 서버로 띄운 경우에만 정상입니다.
 
 ---
 
@@ -133,9 +112,9 @@ npm run preview  # 빌드 결과 미리보기
 1. [Cloudflare Dashboard](https://dash.cloudflare.com/) 로그인
 2. **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**
 3. 저장소 선택 후 빌드 설정 입력
-   - Framework preset : `Vite`
-   - Build command : `npm run build`
-   - Build output directory : `dist`
+   - Framework preset : `None`
+   - Build command : *(비움)*
+   - Build output directory : `/`
 4. **Save and Deploy**
 
 ### 방법 2 — Wrangler CLI
@@ -143,23 +122,22 @@ npm run preview  # 빌드 결과 미리보기
 ```bash
 npm install -g wrangler
 wrangler login
-npm run build
-wrangler pages deploy dist --project-name=lawful-companion
+wrangler pages deploy . --project-name=lawful-companion
 ```
 
-### SPA 404 방지
-
-`/cases`, `/insights/:id` 같은 내부 경로로 직접 진입하거나 새로고침할 때 404가 나지 않도록 `public/_redirects`에 아래 규칙이 포함되어 있으며, 빌드 시 `dist/_redirects`로 복사됩니다.
+페이지가 실제 파일(`index.html` · `cases.html`)로 존재하므로 SPA 리라이트(`_redirects`)가 필요 없습니다. 다만 기존 법인 사이트 주소를 넘겨받는다면 `_redirects` 파일에 개별 규칙을 적어 두십시오.
 
 ```
-/*  /index.html  200
+/kwa-gallery_member_v-6   /   301
+/kwa-gallery_member       /   301
 ```
 
 ---
 
 ## 운영 전 확인할 것
 
-- **해결사례·칼럼 데이터** : 현재 `src/data/cases.ts`, `src/data/insights.ts`의 내용은 **자리표시자**입니다. 게재 전 실제 자료로 교체하고 사실관계와 표기(변호사 광고 규정 포함)를 검토해 주십시오. 사례 섹션·아카이브·푸터에는 `src/data/site.ts`의 `CASE_DISCLAIMER` 면책 문구가 항상 노출됩니다.
-- **초상 사진** : `src/data/profile.ts`의 `portrait`는 Unsplash 자리표시자입니다. 실제 촬영본으로 교체해야 합니다.
-- **상담 폼 전송** : 접수는 프런트엔드에서만 처리됩니다(제출 시 완료 화면만 표시). 실제 운영에서는 `src/hooks/useConsultationForm.ts`의 제출 지점을 메일 발송 API(예: Cloudflare Pages Functions + Resend/SES)로 연결해야 합니다.
-- **연락처** : 현재 대표번호 하나(`02-583-6699`)를 씁니다. 상담예약 전용번호나 카카오톡 채널을 쓰려면 `src/data/site.ts`에 추가하면 헤더·히어로·상담·푸터에 함께 반영됩니다.
+- **해결사례·칼럼 데이터** : 현재 `assets/js/data.js`의 사례와 `index.html`의 칼럼은 **자리표시자**입니다. 게재 전 실제 자료로 교체하고 사실관계와 표기(변호사 광고 규정 포함)를 검토해 주십시오. 사례 섹션·아카이브·푸터에는 면책 문구가 항상 노출됩니다.
+- **초상 사진** : `.hero__portrait`의 `src`는 Unsplash 자리표시자입니다. 실제 촬영본으로 교체해야 합니다.
+- **OG 이미지** : `og:image`가 `/images/og-image.jpg`를 가리키지만 파일이 아직 없습니다.
+- **상담 폼 전송** : 접수는 프런트엔드에서만 처리됩니다(제출 시 완료 화면만 표시). 실제 운영에서는 `assets/js/main.js`의 `initConsultForm` 제출 지점을 메일 발송 API(예: Cloudflare Pages Functions + Resend/SES)로 연결해야 합니다.
+- **연락처** : 현재 대표번호 하나(`02-583-6699`)를 씁니다. 상담예약 전용번호나 카카오톡 채널을 쓰려면 두 HTML의 헤더·히어로·상담·푸터·모바일 바에 함께 반영해야 합니다.
